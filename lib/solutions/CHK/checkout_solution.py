@@ -6,6 +6,11 @@ sys.path.append(os.path.abspath("."))
 
 from utils import Utils
 from constants import Constants
+from frozendict import frozendict
+
+
+class ImproperlyConfigured(Exception):
+    pass
 
 
 T = TypeVar("T", bound="Supermarket")
@@ -18,8 +23,9 @@ class Supermarket:
 
         for kw in kwargs:
             setattr(self, kw, kwargs.get(kw, {}))
-            
-        if not all(getattr(self, kw) for kw in kwargs)
+
+        if not all(getattr(self, kw, None) for kw in kwargs):
+            raise ImproperlyConfigured("Please pass all required keyword arguemnts")
 
     @classmethod
     def factory(cls: type) -> T:
@@ -37,3 +43,4 @@ def checkout(skus: str) -> int:
 
 if "__main__" in __name__:
     ...
+
