@@ -1,3 +1,8 @@
+import sys
+import os
+
+sys.path.append(os.path.abspath("."))
+
 from utils import Utils
 from constants import Constants
 
@@ -10,4 +15,5 @@ def checkout(skus):
 
 if "__main__" in __name__:
     print(Constants.ITEMS)
+
 
