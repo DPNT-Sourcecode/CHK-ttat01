@@ -21,9 +21,10 @@ class Supermarket:
     # for ide's type hint
     items: dict
     offers: dict
+    deals: dict
 
     def __init__(self, *args, **kwargs) -> None:
-        kw_args = ["items", "offers"]
+        kw_args = ["items", "offers", "deals"]
 
         for kw in kwargs:
             setattr(self, kw, frozendict(**kwargs.get(kw, {})))
@@ -33,7 +34,9 @@ class Supermarket:
 
     @classmethod
     def factory(cls: type) -> T:
-        return cls(items=Constants.ITEMS, offers=Constants.OFFERS)
+        return cls(
+            items=Constants.ITEMS, offers=Constants.OFFERS, deals=Constants.DEALS
+        )
 
     def validate_input(self, value: str, cls: Any) -> int:
         """
@@ -94,7 +97,7 @@ class Supermarket:
         return price
 
     def detect_deals(self, skus: str) -> dict:
-        filter()
+        _iterator = filter(function=lambda sku: sku in self.deals, iterable=set(skus))
 
 
 # entrypoint
@@ -117,5 +120,6 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
+
 
 
