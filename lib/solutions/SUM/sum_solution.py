@@ -20,11 +20,14 @@ class SumInt:
         self.x: int = x
         self.y: int = y
 
+    def calculate_self(self) -> int:
+        return sum(self.x, self.y)
 
-def compute(x, y):
-    valid_rage = range(0, 101)
 
-    if x not in valid_rage or y not in valid_rage:
-        raise ...
+def compute(x: int, y: int) -> int:
+    """entrypoint"""
+    _sum: SumInt = SumInt(x=x, y=y)
+    return _sum.calculate_self()
+
 
 
