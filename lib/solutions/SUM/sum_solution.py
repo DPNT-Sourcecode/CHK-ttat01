@@ -17,11 +17,11 @@ class SumInt:
         if x not in self.VALID_RANGE or y not in self.VALID_RANGE:
             raise OutOfRange("Please insert integers in a range of 0-100")
 
-        self.x: int = x
-        self.y: int = y
+        self._x: int = x
+        self._y: int = y
 
     def calculate_self(self) -> int:
-        return sum(self.x, self.y)
+        return self._x + self._y
 
 
 def compute(x: int, y: int) -> int:
@@ -30,4 +30,5 @@ def compute(x: int, y: int) -> int:
     return _sum.calculate_self()
 
 
-
+if "__main__" in __name__:
+    print(compute(101, 12))
