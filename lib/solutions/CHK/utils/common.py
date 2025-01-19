@@ -6,8 +6,8 @@ class Utils:
 
     @staticmethod
     def generate_constants(
-        keys: str, price_range: range, append: Optional[dict] = None
-    ) -> dict:
+        keys: str, price_range: range, append: Optional[dict[str, int]] = None
+    ) -> dict[str, int]:
         """random sku key (character) - value (price) generator
         use append argument to apply pre-defined sku and its value"""
 
@@ -26,3 +26,4 @@ if "__main__" in __name__:
         keys="ABCDEFG", price_range=range(10, 1000), append={"A": 50, "B": 1453}
     )
     print(out)
+
