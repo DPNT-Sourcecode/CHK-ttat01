@@ -1,6 +1,6 @@
 import sys
 import os
-from typing import TypeVar
+from typing import TypeVar, Any
 
 sys.path.append(os.path.abspath("."))
 
@@ -22,7 +22,7 @@ class Supermarket:
         kw_args = ["items", "offers"]
 
         for kw in kwargs:
-            setattr(self, kw, kwargs.get(kw, {}))
+            setattr(self, kw, frozendict(**kwargs.get(kw, {})))
 
         if not all(getattr(self, kw, None) for kw in kwargs):
             raise ImproperlyConfigured("Please pass all required keyword arguemnts")
@@ -32,9 +32,15 @@ class Supermarket:
         return cls(items=Constants.ITEMS, offers=Constants.OFFERS)
 
 
-# noinspection PyUnusedLocal
-# skus = unicode string
-
+    def _validate_input(self, value: str, cls: Any) -> int:
+        if not isinstance(value, cls):
+            return -1
+        return 0
+        
+    def _sanitize_input():
+        ...
+        
+    
 
 # entrypoint
 def checkout(skus: str) -> int:
@@ -42,5 +48,8 @@ def checkout(skus: str) -> int:
 
 
 if "__main__" in __name__:
-    ...
+    # s = Supermarket.factory()
+    # print(s.items)
+    # print(s.offers)
+
 
