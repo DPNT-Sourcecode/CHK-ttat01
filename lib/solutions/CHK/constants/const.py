@@ -8,18 +8,24 @@ class Constants:
         "Offer",
         ["quantity", "discounted_price"],
     )
+    
+    Deal: type = namedtuple(
+        "Deal",
+        [
+            ""
+        ]
+    )
 
-    EXCLUDE: dict[str, int] = {"A": 50, "B": 30, "C": 20, "D": 15}
+    EXCLUDE: dict[str, int] = {"A": 50, "B": 30, "C": 20, "D": 15, "E": 40}
 
     ITEMS: dict[str, int] = Utils.generate_constants(
-        keys="EFGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
+        keys="FGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
     )
 
     OFFERS: dict[list[Offer]] = {
         "A": [Offer(3, 130)],
-        "B": [Offer(2, 45)],
-        "E": [
-            Offer(3, (ITEMS.get("E", 0) * 0.8) * 3),
-            Offer(5, (ITEMS.get("E", 0) * 0.5) * 5),
-        ],
+        "B": [Offer(2, 45)]
     }
+    
+    DEALS: 
+
