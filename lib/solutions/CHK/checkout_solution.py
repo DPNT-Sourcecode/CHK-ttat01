@@ -18,6 +18,11 @@ T = TypeVar("T", bound="Supermarket")
 
 class Supermarket:
 
+    
+    # for ide's type hint
+    items: dict
+    offers: dict
+    
     def __init__(self, *args, **kwargs) -> None:
         kw_args = ["items", "offers"]
 
@@ -32,24 +37,29 @@ class Supermarket:
         return cls(items=Constants.ITEMS, offers=Constants.OFFERS)
 
 
-    def _validate_input(self, value: str, cls: Any) -> int:
-        if not isinstance(value, cls):
+    def validate_input(self, value: str, cls: Any) -> int:
+        if not isinstance(value, cls) or not Utils.item_exists(value, self.items):
             return -1
         return 0
         
-    def _sanitize_input():
-        ...
+    def sanitize_input(self, string: str):
+        return string.upper().strip()
+    
         
     
 
 # entrypoint
 def checkout(skus: str) -> int:
-    raise NotImplementedError()
+    
+    supermarket: Supermarket = Supermarket.factory()
+    
+    skus: str = supermarket.sanitize_input()
 
 
 if "__main__" in __name__:
     # s = Supermarket.factory()
     # print(s.items)
     # print(s.offers)
+
 
 
