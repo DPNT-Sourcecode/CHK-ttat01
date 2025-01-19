@@ -20,7 +20,5 @@ class Constants:
     OFFERS: dict[list[Offer]] = {"A": [Offer(3, 130)], "B": [Offer(2, 45)]}
 
     DEALS: dict[list[Deal]] = {
-        "E": [Deal(quantity=2, sku_for_freecount_of_free_sku="B", count_of_free_sku=1)]
+        "E": [Deal(quantity=2, sku_for_free="B", count_of_free_sku=1)]
     }
-
-

@@ -125,7 +125,3 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
-
-
-
-
