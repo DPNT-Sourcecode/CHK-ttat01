@@ -12,7 +12,12 @@ coverage = "7.5.4"
 pytest = "8.2.2"
 pytest-cov = "5.0.0"
 
+[tool.pytest.ini_options]
+pythonpath = [
+    "lib"
+]
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
