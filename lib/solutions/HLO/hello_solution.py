@@ -13,5 +13,3 @@ def hello(friend_name: str) -> str:
         raise EmptyStringError("String must not be an empty")
 
     return "Hello, {friend_name}".format(friend_name=friend_name.capitalize())
-
-
