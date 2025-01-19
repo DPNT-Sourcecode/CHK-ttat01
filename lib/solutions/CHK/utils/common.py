@@ -32,4 +32,3 @@ if "__main__" in __name__:
         keys="ABCDEFG", price_range=range(10, 1000), append={"A": 50, "B": 1453}
     )
     print(out)
-
