@@ -10,16 +10,20 @@ class Constants:
         keys="EFGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
     )
 
-    OFFER: type = namedtuple(
+    Offer: type = namedtuple(
         "Offer",
         ["quantity", "discounted_price"],
     )
 
-    OFFERS: dict[str,] = {
-        "A": [(3, 130)],
-        "B": [(2, 45)],
-        "E": [(3, (ITEMS.get("E", 0) * 0.8) * 3), (5, (ITEMS.get("E", 0) * 0.5) * 5)],
+    OFFERS: dict[list[Offer]] = {
+        "A": [Offer(3, 130)],
+        "B": [Offer(2, 45)],
+        "E": [
+            Offer(3, (ITEMS.get("E", 0) * 0.8) * 3),
+            Offer(5, (ITEMS.get("E", 0) * 0.5) * 5),
+        ],
     }
+
 
 
 
