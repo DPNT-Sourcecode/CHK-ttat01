@@ -4,8 +4,8 @@ from typing import TypeVar, Any
 
 sys.path.append(os.path.abspath("."))
 
-from utils import Utils
-from constants import Constants
+from lib.solutions.CHK.utils import Utils
+from lib.solutions.CHK.constants import Constants
 from frozendict import frozendict
 
 
@@ -101,7 +101,7 @@ def checkout(skus: str) -> int:
 
     skus: str = supermarket.sanitize_input(string=skus)
 
-    if val := supermarket.validate_input(value=skus, cls=str) == -1:
+    if val := supermarket.validate_input(value=skus, cls=str):
         return val
 
     items_in_basket: dict[str, int] = supermarket.count_items_in_basket(skus=skus)
@@ -112,6 +112,7 @@ def checkout(skus: str) -> int:
 
 
 if "__main__" in __name__:
-    p = checkout("AAABBB")
+    p = checkout("")
     print(p)
+
 
