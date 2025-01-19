@@ -70,11 +70,24 @@ class Supermarket:
         
         for sku, count in basket.items():
             
-            sorted_offers = sorted(self.offers.get(sku, []))
+            # from high to small
+            sorted_offers = sorted(self.offers.get(sku, []), key= lambda _: _[0], reverse=True)
             
-            #minimum basket item required for an offer
+            # minimum basket item required for an offer
             min_required_offer: int = min(self.offers.get(sku, []), key=lambda _: _[0], default=count+1)
-        
+
+            if sku not in self.offers and count < min_required_offer:
+                price += count * self.items.get(sku, 0)
+                
+            else:
+                
+                for c, value in sorted_offers:
+                    
+                    if c > count:
+                        continue
+                    
+                    integer, count = divmod(count, c)
+                    price += integer * value
         
         
         return price
@@ -97,6 +110,7 @@ if "__main__" in __name__:
     # s = Supermarket.factory()
     # print(s.items)
     # print(s.offers)
+
 
 
 
