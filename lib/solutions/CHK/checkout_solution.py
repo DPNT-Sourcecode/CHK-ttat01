@@ -16,9 +16,14 @@ class Supermarket:
     def __init__(self, *args, **kwargs) -> None:
         kw_args = ["items", "offers"]
 
+        for kw in kwargs:
+            setattr(self, kw, kwargs.get(kw, {}))
+            
+        if not all(getattr(self, kw) for kw in kwargs)
+
     @classmethod
     def factory(cls: type) -> T:
-        return cls()
+        return cls(items=Constants.ITEMS, offers=Constants.OFFERS)
 
 
 # noinspection PyUnusedLocal
@@ -32,8 +37,3 @@ def checkout(skus: str) -> int:
 
 if "__main__" in __name__:
     ...
-
-
-
-
-

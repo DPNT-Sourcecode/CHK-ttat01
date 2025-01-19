@@ -23,11 +23,3 @@ class Constants:
             Offer(5, (ITEMS.get("E", 0) * 0.5) * 5),
         ],
     }
-
-
-
-
-
-
-
-
