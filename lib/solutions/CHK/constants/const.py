@@ -4,15 +4,15 @@ from collections import namedtuple
 
 class Constants:
 
+    Offer: type = namedtuple(
+        "Offer",
+        ["quantity", "discounted_price"],
+    )
+
     EXCLUDE: dict[str, int] = {"A": 50, "B": 30, "C": 20, "D": 15}
 
     ITEMS: dict[str, int] = Utils.generate_constants(
         keys="EFGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
-    )
-
-    Offer: type = namedtuple(
-        "Offer",
-        ["quantity", "discounted_price"],
     )
 
     OFFERS: dict[list[Offer]] = {
@@ -23,6 +23,7 @@ class Constants:
             Offer(5, (ITEMS.get("E", 0) * 0.5) * 5),
         ],
     }
+
 
 
 
