@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Union, Iterable
 from random import randint
 
 
@@ -20,9 +20,14 @@ class Utils:
 
         return generated_map
 
+    @staticmethod
+    def item_exists(key: Union[str, Iterable], iter: Iterable) -> bool:
+        """check if any key in key argument exists in iter"""
+
 
 if "__main__" in __name__:
     out = Utils.generate_constants(
         keys="ABCDEFG", price_range=range(10, 1000), append={"A": 50, "B": 1453}
     )
     print(out)
+
