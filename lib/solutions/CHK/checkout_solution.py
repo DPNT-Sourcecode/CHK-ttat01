@@ -92,6 +92,8 @@ class Supermarket:
                     price += count * self.items.get(sku, 0)
 
         return price
+    
+    def 
 
 
 # entrypoint
@@ -114,3 +116,4 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
+
