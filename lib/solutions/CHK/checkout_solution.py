@@ -101,8 +101,8 @@ def checkout(skus: str) -> int:
 
     skus: str = supermarket.sanitize_input(string=skus)
 
-    if val := supermarket.validate_input(value=skus, cls=str):
-        return val
+    if supermarket.validate_input(value=skus, cls=str) == -1:
+        return -1
 
     items_in_basket: dict[str, int] = supermarket.count_items_in_basket(skus=skus)
 
@@ -112,7 +112,8 @@ def checkout(skus: str) -> int:
 
 
 if "__main__" in __name__:
-    p = checkout("")
+    p = checkout("")  # empty basket
     print(p)
+
 
 
