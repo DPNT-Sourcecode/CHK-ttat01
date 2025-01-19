@@ -42,11 +42,19 @@ class Supermarket:
             return -1
         return 0
         
-    def sanitize_input(self, string: str):
+    def sanitize_input(self, string: str) -> str:
         return string.upper().strip()
     
+    def count_items_in_basket(self, skus: str):
+        is_checked = []
+        items_in_basket = {}
         
-    
+        for char in skus:
+            if char not in is_checked:
+                items_in_basket[char] = skus.count(char)
+                is_checked.append(char)
+        
+        return items_in_basket
 
 # entrypoint
 def checkout(skus: str) -> int:
@@ -54,12 +62,17 @@ def checkout(skus: str) -> int:
     supermarket: Supermarket = Supermarket.factory()
     
     skus: str = supermarket.sanitize_input()
+    
+    if val := supermarket.validate_input(value=skus, cls=str) == -1:
+        return val
 
+    items_in_basket = ...
 
 if "__main__" in __name__:
     # s = Supermarket.factory()
     # print(s.items)
     # print(s.offers)
+
 
 
 
