@@ -9,5 +9,15 @@ class Constants:
         keys="EFGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
     )
 
+    OFFERS: dict[str,] = {
+        "A": [(3, 130)],
+        "B": [(2, 45)],
+        "C": [
+            4,
+            300,
+        ],
+    }
+
+
 
 
