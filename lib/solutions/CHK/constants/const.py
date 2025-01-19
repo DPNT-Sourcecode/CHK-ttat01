@@ -12,11 +12,9 @@ class Constants:
     OFFERS: dict[str,] = {
         "A": [(3, 130)],
         "B": [(2, 45)],
-        "C": [
-            4,
-            300,
-        ],
+        "E": [(3, (ITEMS.get("E", 0) * 0.8) * 3), (5, (ITEMS.get("E", 0) * 0.5) * 5)],
     }
+
 
 
 
