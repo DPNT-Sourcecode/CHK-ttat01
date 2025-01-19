@@ -88,6 +88,9 @@ class Supermarket:
                     integer, count = divmod(count, c)
                     price += integer * value
 
+                if count != 0:  # some items left for regular pricing
+                    price += count * self.items.get(sku, 0)
+
         return price
 
 
@@ -109,4 +112,6 @@ def checkout(skus: str) -> int:
 
 
 if "__main__" in __name__:
-    checkout("AAABBBCDEEFDSDSFSAFAGJUYGJAEFHK")
+    p = checkout("AAABBB")
+    print(p)
+
