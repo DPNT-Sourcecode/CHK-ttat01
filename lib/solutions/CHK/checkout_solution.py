@@ -97,7 +97,12 @@ class Supermarket:
         return price
 
     def detect_deals(self, skus: str) -> dict:
-        _iterator = filter(function=lambda sku: sku in self.deals, iterable=set(skus))
+        dealed_items = filter(
+            function=lambda sku: sku in self.deals, iterable=set(skus)
+        )
+
+        for sku in dealed_items:
+            ...
 
 
 # entrypoint
@@ -120,6 +125,7 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
+
 
 
 
