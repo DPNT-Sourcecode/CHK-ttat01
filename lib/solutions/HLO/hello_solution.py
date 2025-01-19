@@ -12,7 +12,6 @@ def hello(friend_name: str) -> str:
     if len(friend_name) <= 0:
         raise EmptyStringError("String must not be an empty")
 
-    return "Hello, World!"
+    return "Hello, {friend_name}!".format(friend_name=friend_name)
 
-    # return "Hello, {friend_name}!".format(friend_name=friend_name.capitalize())
 
