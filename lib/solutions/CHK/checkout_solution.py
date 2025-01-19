@@ -38,14 +38,22 @@ class Supermarket:
 
 
     def validate_input(self, value: str, cls: Any) -> int:
+        """
+        validate for its type and if all basket items exist in the supermarket's databse
+        """
         if not isinstance(value, cls) or not Utils.item_exists(value, self.items):
             return -1
         return 0
         
     def sanitize_input(self, string: str) -> str:
+        """sanitize string input - uppercase + strip whitespaces
+        """
         return string.upper().strip()
     
-    def count_items_in_basket(self, skus: str):
+    def count_items_in_basket(self, skus: str) -> dict[str, int]:
+        """calculate how many items present in basket
+        """
+        
         is_checked = []
         items_in_basket = {}
         
@@ -55,6 +63,17 @@ class Supermarket:
                 is_checked.append(char)
         
         return items_in_basket
+    
+    
+    def calc_price(self, basket: dict[str, int]) -> int:
+        price = 0
+        
+        for sku, count in basket.items():
+            ...
+        
+        
+        
+        return price
 
 # entrypoint
 def checkout(skus: str) -> int:
@@ -66,12 +85,15 @@ def checkout(skus: str) -> int:
     if val := supermarket.validate_input(value=skus, cls=str) == -1:
         return val
 
-    items_in_basket = ...
+    items_in_basket: dict[str, int] = supermarket.count_items_in_basket(skus=skus)
+    
+    ...
 
 if "__main__" in __name__:
     # s = Supermarket.factory()
     # print(s.items)
     # print(s.offers)
+
 
 
 
