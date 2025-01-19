@@ -13,6 +13,18 @@ class Utils:
 
         _start = 10
         _end = max(price_range)
+        generated_map = {k: randint(_start, _end) for k in keys}
 
-        return {k: randint(_start, _end) for k in keys}.update(append)
+        # mutate with intercepted custom vals
+        generated_map.update(append) if append else None
+
+        return generated_map
+
+
+if "__main__" in __name__:
+    out = Utils.generate_constants(
+        keys="ABCDEFG", price_range=range(10, 1000), append={"A": 50, "B": 1453}
+    )
+    print(out)
+
 
