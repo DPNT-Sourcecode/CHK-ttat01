@@ -13,4 +13,3 @@ def test_hello_fn():
         hello(1)
 
     assert hello("Arif") != "Hello, World!"
-

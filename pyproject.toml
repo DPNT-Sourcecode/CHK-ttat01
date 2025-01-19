@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "accelerate-runner"
 version = "0.1.0"
-description = ""
+description = "Iwoca Backend Engineering hometask"
 authors = ["arifgarayev <garayevarif@gmail.com>"]
 readme = "README.md"
 
@@ -15,6 +15,10 @@ pytest-cov = "5.0.0"
 [tool.pytest.ini_options]
 pythonpath = [
     "lib"
+]
+
+packages = [
+    { include = "lib" }
 ]
 
 [build-system]
