@@ -178,7 +178,7 @@ def checkout(skus: str) -> int:
 
     final_price = supermarket.calc_price(basket=items_in_basket)
 
-    final_price = supermarket.group_discount()
+    final_price = supermarket.group_discount(items_in_basket=items_in_basket)
 
     return final_price
 
@@ -251,6 +251,7 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
 
 
 
