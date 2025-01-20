@@ -64,5 +64,12 @@ class Constants:
         "U": [Deal(quantity=3, sku_for_free="U", count_of_free_sku=1)],
     }
 
-    GROUP_ITEMS: tuple
+    GROUP_ITEMS: tuple[tuple] = (
+        Group(
+            items={"S", "T", "X", "Y", "Z"},
+            count=3,
+            price=45,
+        ),
+    )
+
 

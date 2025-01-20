@@ -24,7 +24,7 @@ class Supermarket:
     deals: dict
 
     def __init__(self, *args, **kwargs) -> None:
-        kw_args = ["items", "offers", "deals"]
+        kw_args = ["items", "offers", "deals", "group"]
 
         for kw in kwargs:
             setattr(self, kw, frozendict(**kwargs.get(kw, {})))
@@ -35,7 +35,10 @@ class Supermarket:
     @classmethod
     def factory(cls: type) -> T:
         return cls(
-            items=Constants.ITEMS, offers=Constants.OFFERS, deals=Constants.DEALS
+            items=Constants.ITEMS,
+            offers=Constants.OFFERS,
+            deals=Constants.DEALS,
+            group=Constants.GROUP_ITEMS,
         )
 
     def validate_input(self, value: str, cls: Any) -> int:
@@ -120,6 +123,11 @@ class Supermarket:
                         items_count_in_basket // deal.quantity
                     ) * deal.count_of_free_sku
         return to_reduce
+
+    def group_discount(self, items_in_basket: dict) -> int:
+        total = 0
+        ...
+        return total
 
 
 # entrypoint
@@ -222,3 +230,4 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
