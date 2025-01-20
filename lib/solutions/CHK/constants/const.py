@@ -11,6 +11,8 @@ class Constants:
 
     Deal: type = namedtuple("Deal", ["quantity", "sku_for_free", "count_of_free_sku"])
 
+    Group: type = namedtuple("Group", ["items", "count", "price"])
+
     EXCLUDE: dict[str, int] = {
         "A": 50,
         "B": 30,
@@ -61,3 +63,6 @@ class Constants:
         "R": [Deal(quantity=3, sku_for_free="Q", count_of_free_sku=1)],
         "U": [Deal(quantity=3, sku_for_free="U", count_of_free_sku=1)],
     }
+
+    GROUP_ITEMS: tuple
+
