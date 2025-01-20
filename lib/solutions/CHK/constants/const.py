@@ -71,5 +71,3 @@ class Constants:
             price=45,
         ),
     )
-
-
