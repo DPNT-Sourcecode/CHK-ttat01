@@ -134,8 +134,21 @@ def checkout(skus: str) -> int:
     items_in_basket: dict[str, int] = supermarket.count_items_in_basket(skus=skus)
 
     final_price = supermarket.calc_price(basket=items_in_basket)
-    
-    items_in_basket: dict[str, int] = supermarket.count_items_in_basket(skus={ for k, v in items_in_basket.items()})
+
+    to_reduce = supermarket.detect_deals(items_in_basket=items_in_basket)
+
+    items_in_basket: dict[str, int] = supermarket.count_items_in_basket(
+        skus="".join(
+            [
+                k * v
+                for k, v in {
+                    k: v - to_reduce.get(k, 0) for k, v in items_in_basket.items()
+                }.items()
+            ]
+        )
+    )
+
+    final_price = supermarket.calc_price(basket=items_in_basket)
 
     return final_price
 
@@ -143,5 +156,6 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
+
 
 
