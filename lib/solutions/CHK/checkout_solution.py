@@ -136,11 +136,15 @@ class Supermarket:
                         self.items.get(item, 0)
                     ] * items_in_basket.get(item, 0)
 
+            prices = sum(basket_items_prices)
+
             basket_items_prices.sort(reverse=True)
             total_groups = len(basket_items_prices) // count
             total_discount = total_groups * price
+            rest = sum(prices[total_groups * count :])
+            prices = prices - (rest + total_discount)
 
-            total += total_discount
+            total += prices
 
         return total
 
@@ -173,6 +177,8 @@ def checkout(skus: str) -> int:
     )
 
     final_price = supermarket.calc_price(basket=items_in_basket)
+
+    final_price = supermarket.group_discount()
 
     return final_price
 
@@ -245,6 +251,7 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
 
 
 
