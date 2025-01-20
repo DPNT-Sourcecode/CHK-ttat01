@@ -187,6 +187,10 @@ if "__main__" in __name__:
 | Z    | 50    |            """
 
     for i in string.split():
-        if len(str(i)) < 2 and ord(str(i)) < 128:
-            print(i)
+        if len(str(i)) < 2 and 64 < ord(str(i)) < 91:
+            print(i, end="")
+
+        if len(str(i)) <= 2 and str(i).isdigit() and int(i) < 100:
+            print(str(i), end="")
+
 
