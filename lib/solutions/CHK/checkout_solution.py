@@ -96,13 +96,21 @@ class Supermarket:
 
         return price
 
-    def detect_deals(self, skus: str) -> dict:
-        dealed_items = filter(
-            function=lambda sku: sku in self.deals, iterable=set(skus)
-        )
+    def detect_deals(self, items_in_basket: dict) -> dict:
+        to_reduce: dict = {}
 
-        for sku in dealed_items:
-            ...
+        for sku, deals in self.deals.items():
+
+            if sku not in items_in_basket:
+                continue
+
+            items_count_in_basket = items_in_basket.get(sku, 0)
+
+            for deal in deals:
+                if sku == deal.sku_for_free:
+                    to_reduce[sku] = (
+                        items_count_in_basket // deal.quantity + deal.count_of_free_sku
+                    )
 
 
 # entrypoint
@@ -125,3 +133,4 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
+
