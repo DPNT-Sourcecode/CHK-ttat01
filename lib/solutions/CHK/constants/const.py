@@ -17,8 +17,12 @@ class Constants:
         keys="FGHIJKLMNOPQRSTUVWXYZ", price_range=range(10, 2000), append=EXCLUDE
     )
 
-    OFFERS: dict[list[Offer]] = {"A": [Offer(3, 130)], "B": [Offer(2, 45)]}
+    OFFERS: dict[list[Offer]] = {
+        "A": [Offer(3, 130), Offer(5, 200)],
+        "B": [Offer(2, 45)],
+    }
 
     DEALS: dict[list[Deal]] = {
         "E": [Deal(quantity=2, sku_for_free="B", count_of_free_sku=1)]
     }
+
