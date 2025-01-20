@@ -24,7 +24,7 @@ class Constants:
         "H": 10,
         "I": 35,
         "J": 60,
-        "K": 80,
+        "K": 70,
         "L": 90,
         "M": 15,
         "N": 40,
@@ -32,14 +32,14 @@ class Constants:
         "P": 50,
         "Q": 30,
         "R": 50,
-        "S": 30,
+        "S": 20,
         "T": 20,
         "U": 40,
         "V": 50,
         "W": 20,
-        "X": 90,
-        "Y": 10,
-        "Z": 50,
+        "X": 17,
+        "Y": 20,
+        "Z": 21,
     }
 
     ITEMS: dict[str, int] = Utils.generate_constants(
@@ -50,7 +50,7 @@ class Constants:
         "A": [Offer(3, 130), Offer(5, 200)],
         "B": [Offer(2, 45)],
         "H": [Offer(5, 45), Offer(10, 80)],
-        "K": [Offer(2, 150)],
+        "K": [Offer(2, 120)],
         "P": [Offer(5, 200)],
         "Q": [Offer(3, 80)],
         "V": [Offer(2, 90), Offer(3, 130)],
@@ -71,3 +71,4 @@ class Constants:
             price=45,
         ),
     )
+
