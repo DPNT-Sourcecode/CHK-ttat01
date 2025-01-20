@@ -136,9 +136,12 @@ class Supermarket:
                         self.items.get(item, 0)
                     ] * items_in_basket.get(item, 0)
 
-            total_price = sum(basket_items_prices)
+            basket_items_prices.sort(reverse=True)
             total_groups = len(basket_items_prices) // count
             total_discount = total_groups * price
+
+            total += total_discount
+
         return total
 
 
@@ -242,6 +245,7 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
 
 
 
