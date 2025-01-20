@@ -27,7 +27,15 @@ class Supermarket:
         kw_args = ["items", "offers", "deals", "group"]
 
         for kw in kwargs:
-            setattr(self, kw, frozendict(**kwargs.get(kw, {})))
+            setattr(
+                self,
+                kw,
+                (
+                    frozendict(**kwargs.get(kw, {}))
+                    if isinstance(kwargs.get(kw, {}), dict)
+                    else kwargs.get(kw, {})
+                ),
+            )
 
         if not all(getattr(self, kw, None) for kw in kwargs):
             raise ImproperlyConfigured("Please pass all required keyword arguemnts")
@@ -141,7 +149,8 @@ class Supermarket:
             basket_items_prices.sort(reverse=True)
             total_groups = len(basket_items_prices) // count
             total_discount = total_groups * price
-            rest = sum(prices[total_groups * count :])
+            index = total_groups * count
+            rest = sum(prices[index:])
             prices = prices - (rest + total_discount)
 
             total += prices
@@ -251,6 +260,7 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
 
 
 
