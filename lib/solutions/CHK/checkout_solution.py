@@ -110,7 +110,8 @@ class Supermarket:
             for deal in deals:
                 if sku == deal.sku_for_free:
                     to_reduce[sku] = (
-                        items_count_in_basket // deal.quantity + deal.count_of_free_sku
+                        items_count_in_basket
+                        // (deal.quantity + deal.count_of_free_sku)
                     ) * deal.count_of_free_sku
 
                 else:
@@ -156,6 +157,3 @@ def checkout(skus: str) -> int:
 if "__main__" in __name__:
     p = checkout("a")  # empty basket
     print(p)
-
-
-

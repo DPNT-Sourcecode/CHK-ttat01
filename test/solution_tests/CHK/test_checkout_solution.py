@@ -10,7 +10,3 @@ def test_checkout():
     assert checkout("EEAAABBB") == 255  # 80 + 150 + 60
     assert checkout("AAAAA") == 200
     assert checkout("FFF") == 20
-
-
-
-

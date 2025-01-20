@@ -26,5 +26,3 @@ class Constants:
         "E": [Deal(quantity=2, sku_for_free="B", count_of_free_sku=1)],
         "F": [Deal(quantity=2, sku_for_free="F", count_of_free_sku=1)],
     }
-
-
