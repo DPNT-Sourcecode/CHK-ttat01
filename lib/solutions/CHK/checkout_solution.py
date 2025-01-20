@@ -126,7 +126,14 @@ class Supermarket:
 
     def group_discount(self, items_in_basket: dict) -> int:
         total = 0
-        ...
+
+        for group, count, price in self.group:
+            basket_items_prices = []
+
+            for item in group:
+                if item in items_in_basket:
+                    self.items.get(item, 0)
+
         return total
 
 
@@ -230,4 +237,5 @@ if "__main__" in __name__:
             "Y": 10,
             "Z": 50,
         }
+
 
